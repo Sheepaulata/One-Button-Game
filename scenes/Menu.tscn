@@ -1,0 +1,103 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scripts/Screen/Menu.cs" type="Script" id=1]
+[ext_resource path="res://scenes/Tuto.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/materiels/Menu.tres" type="Theme" id=3]
+[ext_resource path="res://assets/sprites/Car.png" type="Texture" id=4]
+[ext_resource path="res://scenes/Level/LevelContainer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/sprites/Menu.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/Trail.png" type="Texture" id=7]
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0.539855, 1 )
+colors = PoolColorArray( 0.960784, 0.952941, 0.278431, 1, 0.576471, 0.0509804, 0.823529, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = -90.0
+color_ramp = SubResource( 5 )
+
+[node name="Menu" type="Node"]
+script = ExtResource( 1 )
+tuto = ExtResource( 2 )
+level = ExtResource( 5 )
+playBtnPath = NodePath("PlayButton")
+quitBtnPath = NodePath("QuitButton")
+
+[node name="Menu" type="Sprite" parent="."]
+position = Vector2( 512, 288 )
+texture = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 37.0
+margin_top = 30.0
+margin_right = 981.0
+margin_bottom = 211.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource( 3 )
+text = "Pixel Race"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HelpButton" type="Button" parent="."]
+margin_left = 476.0
+margin_top = 628.0
+margin_right = 577.0
+margin_bottom = 682.0
+rect_scale = Vector2( 0.8, 0.8 )
+theme = ExtResource( 3 )
+text = "Help"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitButton" type="Button" parent="."]
+margin_left = 492.0
+margin_top = 741.0
+margin_right = 594.0
+margin_bottom = 795.0
+rect_scale = Vector2( 0.5, 0.5 )
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource( 3 )
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Car" type="Sprite" parent="."]
+position = Vector2( -109, 282 )
+rotation = 1.5708
+texture = ExtResource( 4 )
+
+[node name="Trail" type="Particles2D" parent="Car"]
+position = Vector2( 0.000366211, 103 )
+rotation = -1.5708
+amount = 9
+lifetime = 0.4
+local_coords = false
+process_material = SubResource( 7 )
+texture = ExtResource( 7 )
+
+[node name="PlayButton" type="Button" parent="."]
+margin_left = -281.0
+margin_top = 265.0
+margin_right = -187.0
+margin_bottom = 319.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource( 3 )
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]

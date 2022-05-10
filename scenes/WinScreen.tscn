@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/materiels/Pixel.gdshader" type="Shader" id=1]
+[ext_resource path="res://assets/materiels/NeonSans.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scripts/Screen/WinScreen.cs" type="Script" id=3]
+[ext_resource path="res://assets/materiels/Menu.tres" type="Theme" id=4]
+[ext_resource path="res://assets/materiels/Hud.tres" type="Theme" id=5]
+[ext_resource path="res://assets/sprites/Win.png" type="Texture" id=6]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 1 )
+shader_param/pixelFactor = 0.0
+
+[sub_resource type="DynamicFont" id=1]
+size = 109
+outline_color = Color( 0, 0.937255, 1, 1 )
+font_data = ExtResource( 2 )
+
+[node name="Node2D" type="CanvasLayer"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 303.0 ]
+}
+
+[node name="Win" type="Control" parent="."]
+pause_mode = 2
+material = SubResource( 2 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Win" type="Sprite" parent="Win"]
+position = Vector2( 510, -337.063 )
+scale = Vector2( 2.03759, 1.51103 )
+texture = ExtResource( 6 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Win"]
+use_parent_material = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="YouWin" type="Label" parent="Win/VBoxContainer"]
+pause_mode = 2
+use_parent_material = true
+margin_left = 283.0
+margin_top = 86.0
+margin_right = 741.0
+margin_bottom = 211.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 1 )
+text = "YOU WIN"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Win/VBoxContainer"]
+pause_mode = 2
+use_parent_material = true
+margin_left = 456.0
+margin_top = 302.0
+margin_right = 567.0
+margin_bottom = 600.0
+size_flags_horizontal = 6
+size_flags_vertical = 7
+theme = ExtResource( 5 )
+text = "Score"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Button" parent="Win"]
+pause_mode = 2
+margin_left = 478.0
+margin_top = 650.0
+margin_right = 580.0
+margin_bottom = 704.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 4 )
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+pause_mode = 2
